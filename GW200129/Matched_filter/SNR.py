@@ -9,8 +9,6 @@ H1 = 'H-H1_GWOSC_4KHZ_R1-1264316101-32.hdf5'
 L1 = 'L-L1_GWOSC_4KHZ_R1-1264316101-32.hdf5'
 V1 = 'V-V1_GWOSC_4KHZ_R1-1264316101-32.hdf5'
 
-i = 0
-
 for data,dect in zip([H1, L1, V1],['H1','L1','V1']) :
 	strain, time, channel_dict = readligo.loaddata(data)
 	time = types.TimeSeries(time , delta_t = 1/4096)
@@ -32,7 +30,6 @@ for data,dect in zip([H1, L1, V1],['H1','L1','V1']) :
 	plt.plot(time, abs(SNR), label = dect)
 	plt.xlabel('GPS time')
 	plt.ylabel('Signal-to-noise ratio')
-	i = i + 1
 
 plt.grid(alpha = 0.3, color = 'grey')
 plt.legend()
