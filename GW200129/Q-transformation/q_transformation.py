@@ -22,7 +22,7 @@ for data,dect in zip([H1, L1, V1],['H1','L1','V1']) :
 	whitened_strain = (strain.to_frequencyseries() / psd**0.5).to_timeseries()
 	whitened_strain = whitened_strain.crop(14, 16)
 	times, freq ,power = whitened_strain.qtransform(0.001,logfsteps=200,frange=(20,500),qrange=(10,10))
-	f = ax[i].pcolormesh(times, freq, power, vmax = 25)
+	f = ax[i].pcolormesh(times, freq, power, vmax = 25, cmap = 'inferno')
 	ax[i].set_yscale('log')
 	ax[i].set_xlabel('Sample time (second)')
 	ax[i].set_ylabel('Frequency_'+dect)
