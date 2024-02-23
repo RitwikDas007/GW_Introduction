@@ -21,7 +21,7 @@ for data,dect in zip([H1, L1, V1],['H1','L1','V1']) :
 	strain = strain.crop(2,2)
 	psd = interpolate(welch(strain), delta_f = 1/strain.duration)
 	whitened_strain = (strain.to_frequencyseries() / psd**0.5).to_timeseries()
-	whitened_strain = whitened_strain.crop(14, 16)
+	whitened_strain = whitened_strain.time_slice(14, 16)
 	times, freq ,power = whitened_strain.qtransform(0.001,logfsteps=200,frange=(30,500),qrange=(10,10))
 	f = ax[i].pcolormesh(times, freq, power, vmax = 25, cmap = 'inferno')
 	ax[i].set_yscale('log')
